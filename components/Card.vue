@@ -1,5 +1,4 @@
 <template>
-  <div>
     <!-- <p class="user-avatar">{{ card.char_id }}</p> -->
     <p class="user-name">{{ card.name }}</p>
     <p class="user-nickname">@{{ card.nickname }}</p>
@@ -9,7 +8,6 @@
         <p>{{card.instagram_username}}</p>
         <p>@{{card.nickname}}</p>
         <img src={card.img}/> -->
-  </div>
   <BuyFunc :value="card.price" :card="card" />
 </template>
 

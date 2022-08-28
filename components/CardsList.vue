@@ -14,7 +14,7 @@
   cards.value.forEach(
     (e) => (e.price = Math.floor(Math.random() * 60000) + 10000)
   );
-  console.log(cards);
+  console.log(cards.value);
 </script>
 
 <style>

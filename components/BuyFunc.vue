@@ -1,12 +1,12 @@
 <template>
-  <div class="card-footer"></div>
-  <div>
-    <button @click="cart += +value, card.count += 1">+</button>
-    <button @click="cart -= +value, card.count -= 1">-</button>
-    <button @click="cart -= +value, card.count -= 1">0</button>
-    <b>{{ card.count }}</b>
+  <div class="card-footer">
+    <div>
+      <button class="btn" @click="add()">+</button>
+      <button class="btn" @click="del()">-</button>
+      <b class="count">{{ card.count }}</b>
+    </div>
+    <b>{{ priceMask(card.price) }} руб.</b>
   </div>
-  <p>{{ priceMask(card.price) }} руб.</p>
 </template>
 
 <script>
@@ -23,6 +23,16 @@ export default {
     priceMask: function (price) {
       return new Intl.NumberFormat("ru-RU").format(price);
     },
+    add: function () {
+      this.cart = this.cart + this.props.card.price;
+      this.props.card.count = this.props.card.count + 1;
+    },
+    del: function () {
+      if (this.props.card.count > 0) {
+      this.cart = this.cart - this.props.card.price;
+      this.props.card.count = this.props.card.count - 1;
+      }
+    }
   },
 };
 </script>
@@ -38,5 +48,9 @@ export default {
   border: none;
   cursor: pointer;
   background-color: transparent;
+}
+
+.count {
+  margin-left: 5px;
 }
 </style>
