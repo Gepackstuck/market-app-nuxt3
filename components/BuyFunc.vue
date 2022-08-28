@@ -5,7 +5,7 @@
       <button class="btn" @click="del()">-</button>
       <b class="count">{{ card.count }}</b>
     </div>
-    <b>{{ priceMask(card.price) }} руб.</b>
+    <b class="price">{{ priceMask(card.price) }} руб.</b>
   </div>
 </template>
 
@@ -29,15 +29,22 @@ export default {
     },
     del: function () {
       if (this.props.card.count > 0) {
-      this.cart = this.cart - this.props.card.price;
-      this.props.card.count = this.props.card.count - 1;
+        this.cart = this.cart - this.props.card.price;
+        this.props.card.count = this.props.card.count - 1;
       }
-    }
+    },
   },
 };
 </script>
 
 <style>
+.price {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+}
+
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -52,5 +59,8 @@ export default {
 
 .count {
   margin-left: 5px;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 14px;
 }
 </style>

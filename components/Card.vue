@@ -1,13 +1,14 @@
 <template>
-    <!-- <p class="user-avatar">{{ card.char_id }}</p> -->
-    <p class="user-name">{{ card.name }}</p>
-    <p class="user-nickname">@{{ card.nickname }}</p>
-    <img class="user-img" :src="card.img" />
-    <!-- <img src={card.user.profile_image.small}/>
-        <p>{{card.user.first_name}}</p>
-        <p>{{card.instagram_username}}</p>
-        <p>@{{card.nickname}}</p>
-        <img src={card.img}/> -->
+  <div class="head-card">
+    <img class="user-avatar" :src="card.user.profile_image.small" />
+    <div>
+      <a :href="card.user.links.html" target="_blank" class="user-name">
+        {{ card.user.name }}
+      </a>
+      <p class="user-nickname">@{{ card.user.instagram_username }}</p>
+    </div>
+  </div>
+  <img class="user-img" :src="card.urls.regular" />
   <BuyFunc :value="card.price" :card="card" />
 </template>
 
@@ -29,12 +30,20 @@ export default {
 </script>
 
 <style>
+.head-card {
+  display: flex;
+  align-items: center;
+}
+
 .user-avatar {
   width: 30px;
   height: 30px;
+  margin-right: 10px;
+  border-radius: 20px;
 }
 
 .user-name {
+  text-decoration: none;
   width: 120px;
   height: 12px;
   font-style: normal;
@@ -53,6 +62,7 @@ export default {
   font-size: 12px;
   line-height: 14px;
   color: #8d8d8d;
+  margin-top: 5px;
 }
 
 .user-img {
